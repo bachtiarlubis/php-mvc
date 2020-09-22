@@ -47,6 +47,7 @@
 			var_dump($url);
 			var_dump($this->params);
 		}
+		// END of __construct()
 
 		public function parseURL(){
 			if (isset($_GET['url'])) {
