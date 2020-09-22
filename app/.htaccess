@@ -1,0 +1,3 @@
+# Apabila folder app/ dibuka dan index.php tidak ditemukan didalamnya, maka-
+# isi app/ tidak akan ditampilkan.
+Options -Indexes

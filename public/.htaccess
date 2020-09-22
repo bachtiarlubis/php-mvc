@@ -1,0 +1,23 @@
+# Untuk menghindari ambiguitas ketika memanggil folder atau file di dalam public/
+Options -Multiviews
+
+# Menulis ulang (Rewrite) URL yang ada di browser
+# Jalankan fungsi Rewrite
+RewriteEngine On
+
+# Untuk menghindari dalam penginputan URL ketika ada nama folder atau file yang sama dengan Controller atau Method
+# Abaikan url yang merupakan folder / direktori
+#RewriteCond %{REQUEST_FILENAME} !-d
+# Abaikan url yang merupakan file.
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# RewriteRule -> Aturan untuk Menulis ulang URL dimana
+# ^ atau Carrot -> Membaca apapun yang dituliskan di URL dari awal setelah http://.../public/
+# (.*) -> Untuk mengambil semua karakternya (kecuali ENTER) -
+# $ -> sampai selesai / habis.
+# index.php?url -> kemudian arahkan ke file index.php yang mengirimkan $_GET['url']
+# $1 -> Merupakan placeholder untuk menyimpan value dari $_GET['url']
+# [L] -> Untuk mengabaikan rule apapun setelah kondisi / rule yang diberikan telah terpenuhi
+RewriteRule ^(.*)$ index.php?url=$1 [L]
+# --> Sehingga semua karakter setelah http://.../public/ akan dijadikan value dari $_GET['url']. Sehingga ketika URL seperti berikut :
+# http://.../public/controller/method/param_qwert132 maka $_GET['url'] = "controller/method/param_qwert132".
