@@ -10,7 +10,7 @@
 				'usia' => $usia
 			];
 
-			$this->view('templates/header', $data);
+			$this->view('templates/header', [$data['judul']]);
 			$this->view('about/index', $data);
 			$this->view('templates/footer');
 		}
@@ -19,7 +19,7 @@
 			$data = [
 				'judul' => 'About Page'
 			];
-			$this->view('templates/header', $data);
+			$this->view('templates/header', [$data['judul']]);
 			$this->view('about/page', $data);
 			$this->view('templates/footer');
 		}

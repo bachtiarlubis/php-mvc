@@ -43,9 +43,9 @@
 			// jalankan controller & method, serta kirimkan parameters jika ada
 			call_user_func_array([$this->controller, $this->method], $this->params);
 
-			echo "<pre>";
+			/*echo "<pre>";
 			var_dump($url);
-			var_dump($this->params);
+			var_dump($this->params);*/
 		}
 		// END of __construct()
 
