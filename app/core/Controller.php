@@ -8,4 +8,11 @@
 			// karena index.php nya berada di public/index.php, makanya ../app/..
 			
 		}
+
+		public function model($model){
+			require_once "../app/models/".$model.".php";
+
+			// Mengembalikan objek class
+			return new $model;
+		}
 	}
