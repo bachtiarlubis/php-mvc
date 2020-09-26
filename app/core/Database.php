@@ -62,4 +62,14 @@
 			return $this->stmt->fetch(PDO::FETCH_ASSOC);	
 		}
 
+		// mengambil jumlah row yang berubah pada suatu tabel setelah eksekusi insert, delete atau update.
+		public function rowCount(){
+			return $this->stmt->rowCount();
+		}
+
+		// mengambil jumlah row pada suatu tabel
+		public function fetchColumn(){
+			return $this->stmt->fetchColumn();
+		}
+
 	}
