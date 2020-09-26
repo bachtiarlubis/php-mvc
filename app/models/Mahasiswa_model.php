@@ -21,9 +21,10 @@
 			return $this->db->single();
 		}
 
+		// $data adalah array $_POST
 		public function tambahDataMahasiswa($data){
 			$query = "
-					INSERT INTO tbl_mahasiswa VALUES
+					INSERT INTO {$this->table} VALUES
 					('', :nama, :nim, :email, :id_jurusan)
 					";
 			$this->db->query($query);
@@ -38,6 +39,18 @@
 			// mengembalikan jumlah baris yang berubah
 			return $this->db->rowCount();
 
+
+		}
+
+
+		public function hapusDataMahasiswa($id){
+			$query= "DELETE FROM {$this->table} WHERE id = :id";
+			$this->db->query($query);
+			$this->db->bind('id', $id);
+			$this->db->execute();
+
+			// mengembalikan jumlah baris yang berubah
+			return $this->db->rowCount();
 		}
 
 

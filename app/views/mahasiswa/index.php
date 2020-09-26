@@ -1,6 +1,7 @@
+<!-- Note : Sweetalert2 dipanggil di footer -->
 <div class="container mt-3">
 	<div class="row">
-		<div class="col-6">
+		<div class="col-7">
 
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
@@ -11,9 +12,10 @@
 			
 			<ul class="list-group">
 			<?php foreach ($data['mhs'] as $mhs) : ?>
-				  	<li class="list-group-item d-flex justify-content-between align-items-center">
+				  	<li class="list-group-item">
 				  		<?= $mhs['nama']; ?>
-				  		<a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-warning badge-pill">detail</a>
+				  		<a href="#" onclick="sweetConfirm(<?= $mhs['id']; ?>, 'Hapus data mahasiswa dengan nim <?= $mhs['nim'] ?>', 'hapus');" class="badge badge-danger badge-pill float-right ml-1">hapus</a>
+				  		<a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-warning badge-pill float-right ml-1">detail</a>
 				  	</li>
 			<?php endforeach; ?>
 			</ul>
