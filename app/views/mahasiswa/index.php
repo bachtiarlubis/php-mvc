@@ -4,7 +4,8 @@
 		<div class="col-7">
 
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+			<!-- data-toggle dan data-target yang akan memicu modal tampil -->
+			<button type="button" class="btn btn-primary" id="btnTambahData" data-toggle="modal" data-target="#formModal">
 				Tambah Data Mahasiswa
 			</button>
 
@@ -14,8 +15,10 @@
 			<?php foreach ($data['mhs'] as $mhs) : ?>
 				  	<li class="list-group-item">
 				  		<?= $mhs['nama']; ?>
-				  		<a href="#" onclick="sweetConfirm(<?= $mhs['id']; ?>, 'Hapus data mahasiswa dengan nim <?= $mhs['nim'] ?>', 'hapus');" class="badge badge-danger badge-pill float-right ml-1">hapus</a>
-				  		<a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-warning badge-pill float-right ml-1">detail</a>
+				  		<a href="#" onclick="sweetConfirm('Hapus data mahasiswa <?= $mhs['nama'] ?> dengan nim <?= $mhs['nim'] ?>', 'Hapus', '<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>');" class="badge badge-danger badge-pill float-right ml-1">hapus</a>
+				  		<!-- proses ubah ada di js/my_script.js -->
+				  		<a href="" class="badge badge-warning badge-pill float-right ml-1 tampilModalUbah" data-toggle="modal" data-target="#formModal" data-idmhs="<?= $mhs['id']; ?>" data-urlgetdata="<?= BASEURL; ?>/mahasiswa/getdata" data-urlaction="<?= BASEURL; ?>/mahasiswa/ubah">ubah</a>
+				  		<a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge badge-primary badge-pill float-right ml-1">detail</a>
 				  	</li>
 			<?php endforeach; ?>
 			</ul>
@@ -37,6 +40,7 @@
 	      	</div>
 
 	      	<form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
+	      		<input type="hidden" style="display: none;" id="id_mhs" name="id_mhs">
 		      	<div class="modal-body">
 	        		<div class="form-group">
 						<label for="nama">Nama</label>
@@ -53,6 +57,7 @@
 				  	<div class="form-group">
 				    	<label for="id_jurusan">Jurusan</label>
 				    	<select class="form-control" id="id_jurusan" name="id_jurusan">
+				    		<option value="" selected>Pilih Jurusan</option>
 				    		<?php foreach($data['jurusan'] as $jurusan): ?>
 					      		<option value="<?= $jurusan['id'] ?>"><?= $jurusan['jurusan']; ?></option>
 					    	<?php endforeach ?>
