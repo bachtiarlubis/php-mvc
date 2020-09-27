@@ -1,13 +1,33 @@
 <!-- Note : Sweetalert2 dipanggil di footer -->
 <div class="container mt-3">
+	
 	<div class="row">
-		<div class="col-7">
+		<div class="col-lg-7">
+			
+			<form action="<?= BASEURL; ?>/mahasiswa/cari" method="post">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="cari mahasiswa..." name="keywoard" id="keywoard" autocomplete="off">
+				  	<div class="input-group-append">
+				    	<button class="btn btn-outline-primary" type="submit" id="btnCari">Cari</button>
+				  	</div>
+				</div>
+			</form>
 
+		</div>
+	</div>
+
+	<div class="row mb-1">
+		<div class="col-lg-7">
 			<!-- Button trigger modal -->
 			<!-- data-toggle dan data-target yang akan memicu modal tampil -->
 			<button type="button" class="btn btn-primary" id="btnTambahData" data-toggle="modal" data-target="#formModal">
 				Tambah Data Mahasiswa
 			</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-7">
 
 			<h3 class="mt-1">Daftar Mahasiswa</h3>
 			

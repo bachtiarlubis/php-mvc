@@ -74,4 +74,12 @@
 			// mengembalikan jumlah baris yang berubah
 			return $this->db->rowCount();
 		}
+
+		// cari data mahasiswa berdasarkan nama
+		public function getMahasiswaByName($name){
+			$this->db->query("SELECT a.*, b.jurusan FROM {$this->table} a INNER JOIN ref_jurusan b ON a.id_jurusan = b.id WHERE a.nama LIKE :nama");
+			$this->db->bind('nama', "%{$name}%");
+			// menampilkan seluruh data
+			return $this->db->resultSet();
+		}
 	}

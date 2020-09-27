@@ -100,4 +100,16 @@
 				exit();
 			} // END insert validation
 		}
+
+		public function cari(){
+			$data = [
+				'judul' => 'Daftar Mahasiswa',
+				'mhs' => $this->model('Mahasiswa_model')->getMahasiswaByName($_POST['keywoard']),
+				'jurusan' => $this->model('Jurusan_model')->getAllJurusan()
+			];
+
+			$this->view('templates/header', ['judul'=> 'Daftar Mahasiswa']);
+			$this->view('mahasiswa/index', $data);
+			$this->view('templates/footer');
+		}
 	}
